@@ -128,7 +128,10 @@ int __cdecl main(int argc, char **argv)
     do {
         iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
         if (!strcmp(recvbuf, "exit")) break;
-
+        cout << recvbuf << endl;
+        if (!strncmp(recvbuf, "--[reply]--", 4)) {
+            cout << recvbuf << endl;
+        }
 
         if ( iResult > 0 ){
             break;

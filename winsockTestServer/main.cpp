@@ -17,6 +17,7 @@
 
 #define DEFAULT_BUFLEN 512
 #define DEFAULT_PORT "27015"
+//extern const int DEFAULT_BUFLEN = 512;
 
 using namespace std;
 
@@ -54,7 +55,13 @@ unsigned __stdcall ClientSession(void *data)
                 connectedDeviceList.printValues();
             }
             string recvString(recvbuf);
-            cout << "User " << deviceNumber << " sent message: " << recvString << endl;
+            string prefix = "prefix";
+            string messageWithUser = "--[reply]--User " + to_string(deviceNumber)+ " sent message: " + recvString;
+            int outMessageLength = messageWithUser.length();
+            char outArray[outMessageLength];
+            strcpy(outArray, messageWithUser.c_str());
+            connectedDeviceList.sendAllClients(outArray);
+            cout << messageWithUser << endl;
         } else if (iResult == 0){
 
             iSendResult = send( ClientSocket, recvbuf, iResult, 0 );

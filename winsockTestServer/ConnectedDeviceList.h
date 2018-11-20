@@ -5,6 +5,9 @@
 #ifndef WINSOCKTESTSERVER_CONNECTEDDEVICELIST_H
 #define WINSOCKTESTSERVER_CONNECTEDDEVICELIST_H
 
+#define DEFAULT_BUFLEN 512
+#define DEFAULT_PORT "27015"
+
 #include "DeviceConnected.h"
 
 struct Node{
@@ -28,6 +31,8 @@ public:
     void deleteListItem(int index);
 
     ConnectedDeviceList();
+
+    void sendAllClients(char message[]);
 
 private:
     void init_insert(SOCKET ClientSocket);

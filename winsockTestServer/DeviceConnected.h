@@ -20,6 +20,7 @@ public:
     SOCKET ClientSocket = INVALID_SOCKET;
     DeviceConnected();
     DeviceConnected(SOCKET _ClientSocket);
+    void sendMessageClient(char message[]);
     //void ClientSession(SOCKET ClientSocket);
     //unsigned __stdcall ClientSession(void *data);
 };

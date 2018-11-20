@@ -96,3 +96,14 @@ void ConnectedDeviceList::init_insert(SOCKET ClientSocket) {
     linklist_ptr->connectedDevice = new DeviceConnected(ClientSocket);
     linklist_ptr->link = NULL;
 }
+
+void ConnectedDeviceList::sendAllClients(char message[]) {
+    if (sizeof(message) > DEFAULT_BUFLEN) {
+        cout << "Message too long to send to all" << endl;
+    } else {
+        // start reading entries from the head of the linked list
+        for(iter=linklist_ptr; iter!=NULL; iter=iter->link){
+            iter->connectedDevice->sendMessageClient(message);
+        }
+    }
+}

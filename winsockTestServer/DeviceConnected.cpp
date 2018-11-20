@@ -29,3 +29,7 @@ DeviceConnected::DeviceConnected(SOCKET _ClientSocket) {
     //unsigned threadID = ConnectedDeviceList::size;
     //hThread = (HANDLE)DeviceConnected::_beginthreadex(NULL, 0, &DeviceConnected::ClientSession, (void*)ClientSocket, 0, &threadID);
 }
+
+void DeviceConnected::sendMessageClient(char message[]) {
+    send(ClientSocket, message, DEFAULT_BUFLEN, 0);
+}
