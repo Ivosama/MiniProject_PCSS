@@ -10,6 +10,10 @@ class Game {
 public:
     int p1Array[];
     int p2Array[];
+
+    void populateArrays();
+    int getHit();
+
 };
 
 
