@@ -16,6 +16,14 @@ void populateArrays() {
     }
 }
 
+void updateMap(int newArray[], int player) {
+    if (player == 0) {
+        p1Array = newArray;
+    } else {
+        p2Array = newArray;
+    }
+}
+
 int getHit(int hitX, int hitY, int player) {
 
     if (player == 0) {

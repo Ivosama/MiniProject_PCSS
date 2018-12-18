@@ -12,7 +12,8 @@ public:
     int p2Array[];
 
     void populateArrays();
-    int getHit();
+    int getHit(int hitX, int hitY, int player);
+    void updateMap(int newArray[], int player);
 
 };
 
