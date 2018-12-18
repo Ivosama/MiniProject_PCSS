@@ -8,6 +8,7 @@
 #include <ws2tcpip.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string>
 
 #include "ConnectedDeviceList.h"
 
@@ -57,10 +58,6 @@ unsigned __stdcall ClientSession(void *data)
             string recvString(recvbuf);
             string prefix = "prefix";
             string messageWithUser = "--[reply]--User " + to_string(deviceNumber)+ " sent message: " + recvString;
-            int outMessageLength = messageWithUser.length();
-            char outArray[outMessageLength];
-            strcpy(outArray, messageWithUser.c_str());
-            connectedDeviceList.sendAllClients(outArray);
             cout << messageWithUser << endl;
         } else if (iResult == 0){
 
