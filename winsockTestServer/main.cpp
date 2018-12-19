@@ -9,8 +9,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
+#include <vector>
 
 #include "ConnectedDeviceList.h"
+
+#include "Game.h"
 
 // Need to link with Ws2_32.lib
 //#pragma comment (lib, "Ws2_32.lib")
@@ -23,6 +26,8 @@
 using namespace std;
 
 ConnectedDeviceList connectedDeviceList;
+
+Game game;
 
 unsigned __stdcall ClientSession(void *data)
 {
@@ -45,6 +50,13 @@ unsigned __stdcall ClientSession(void *data)
 
             // Echo the buffer back to the sender
             iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
+
+            // Game stuff
+
+
+
+
+
             if (iSendResult == SOCKET_ERROR) {
                 printf("send failed with error: %d\n", WSAGetLastError());
                 closesocket(ClientSocket);

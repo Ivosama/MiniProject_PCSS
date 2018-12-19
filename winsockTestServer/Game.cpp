@@ -10,10 +10,6 @@
 int p1Array[10][10];
 int p2Array[10][10];
 
-Game::Game() {
-    populateArrays();
-}
-
 void Game::populateArrays() {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
@@ -23,11 +19,19 @@ void Game::populateArrays() {
     }
 }
 
-void Game::updateMap(int newArray[], int player) {
+void Game::updateMap(int newArray[10][10], int player) {
     if (player == 0) {
-        p1Array = newArray;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                p1Array[i][j] = newArray[i][j];
+            }
+        }
     } else {
-        p2Array = newArray;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                p2Array[i][j] = newArray[i][j];
+            }
+        }
     }
 }
 
@@ -53,13 +57,13 @@ int Game::getHit(int hitX, int hitY, int player) {
         if (p1Array[hitX][hitY] == 0) {
             return 0;
         } else {
-            return 1
+            return 1;
         }
     } else {
         if (p2Array[hitX][hitY] == 0) {
             return 0;
         } else {
-            return 1
+            return 1;
         }
     }
 }

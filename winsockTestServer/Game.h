@@ -13,13 +13,16 @@
 #include <string>
 
 class Game {
-public:
+private:
     int p1Array[10][10];
     int p2Array[10][10];
 
-    void populateArrays();
+
     int getHit(int hitX, int hitY, int player); // player = 0 || player = 1
-    void updateMap(int newArray[], int player); // player = 0 || player = 1
+    void updateMap(int newArray[10][10], int player); // player = 0 || player = 1
+
+public:
+    void populateArrays();
     int resolveRound(const char* input);
 
 };
