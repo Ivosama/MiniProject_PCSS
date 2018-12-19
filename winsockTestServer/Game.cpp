@@ -4,10 +4,17 @@
 
 #include "Game.h"
 
+#include <stdio.h>
+#include <vector>
+
 int p1Array[10][10];
 int p2Array[10][10];
 
-void populateArrays() {
+Game::Game() {
+    populateArrays();
+}
+
+void Game::populateArrays() {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             p1Array[i][j] = 0;
@@ -16,7 +23,7 @@ void populateArrays() {
     }
 }
 
-void updateMap(int newArray[], int player) {
+void Game::updateMap(int newArray[], int player) {
     if (player == 0) {
         p1Array = newArray;
     } else {
@@ -24,7 +31,23 @@ void updateMap(int newArray[], int player) {
     }
 }
 
-int getHit(int hitX, int hitY, int player) {
+int Game::resolveRound(const char* input) {
+
+    std::string str = (std::string) input;
+    std::vector<char> data(str.begin(), str.end());
+    if (data.size() > 4) {
+        int posX = (int) data[0];
+        int posY = (int) data[2];
+        int player = (int) data[4];
+
+        return (getHit(posX, posY, player));
+
+    } else {
+        return 0;
+    }
+}
+
+int Game::getHit(int hitX, int hitY, int player) {
 
     if (player == 0) {
         if (p1Array[hitX][hitY] == 0) {
