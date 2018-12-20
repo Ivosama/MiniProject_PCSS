@@ -7,6 +7,7 @@
 #include <iostream>
 #include <ctime>
 
+
 void Game2maybe::clear(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
