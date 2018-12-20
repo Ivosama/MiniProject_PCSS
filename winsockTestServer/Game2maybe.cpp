@@ -70,18 +70,19 @@ int Game2maybe::numberOfShips(){
     return c;
 }
 //Runs the game, the whole thing, takes receive buff as input and transform it into integers to put in the attack function
+//Need to transform those char into integers, I think now we are getting ASCII values which would be 49 for 1, and that is not valid.
 void Game2maybe::run(char input[]){
     srand(time(NULL));
     clear();
     ships();
 
-    int pos1 = input[0];
-    int pos2 = input[2];
+    int pos1 = input[0] - 48;
+    int pos2 = input[2] - 48;
 
-    char prompt;
+    //char prompt;
 
     while(1){
-        std::cout << "Please input a location: "; std::cin >> pos1 >> pos2;
+        //std::cout << "Please input a location: "; std::cin >> pos1 >> pos2;
 
         if(attack(pos1, pos2))
             std::cout << "You wasted a fool" << std::endl;
@@ -94,9 +95,9 @@ void Game2maybe::run(char input[]){
             std::cout << "No lucky for you, ploplo" << std::endl;
 
         std::cout << "Number of ships left " << numberOfShips() << std::endl;
-        std::cout << "Do you want to continue? (y/n) "; std::cin >> prompt;
-        if(prompt == 'n')
-            break;
+        //std::cout << "Do you want to continue? (y/n) "; std::cin >> prompt;
+        //if(prompt == 'n')
+            //break;
 
 
         if(numberOfShips()== 0)
