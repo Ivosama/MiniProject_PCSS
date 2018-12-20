@@ -7,6 +7,7 @@
 #include <iostream>
 #include <ctime>
 
+//clears the map arrays and sets them to 0
 void Game2maybe::clear(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
@@ -15,7 +16,7 @@ void Game2maybe::clear(){
         }
     }
 }
-
+//Shows the map
 void Game2maybe::show() {
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
@@ -24,7 +25,7 @@ void Game2maybe::show() {
         std::cout << std::endl;
     }
 }
-
+//Shows the enemy map
 void Game2maybe::showEnemyMap() {
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
@@ -33,7 +34,7 @@ void Game2maybe::showEnemyMap() {
         std::cout << std::endl;
     }
 }
-
+//Sets the ships to positions (random)
 void Game2maybe::ships(){
     int s = 0;
     while(s < maxShips){
@@ -46,7 +47,7 @@ void Game2maybe::ships(){
 
     }
 }
-
+//This is how you attack, in this way 1 1 for example
 bool Game2maybe::attack(int x, int y){
     if(map[x][y] == 1){
         map[x][y] = 2;
@@ -54,6 +55,7 @@ bool Game2maybe::attack(int x, int y){
     }
     return false;
 }
+//Returns the number of ships left
 int Game2maybe::numberOfShips(){
 
     int c = 0;
@@ -67,14 +69,14 @@ int Game2maybe::numberOfShips(){
     }
     return c;
 }
-
-void Game2maybe::run(){
+//Runs the game, the whole thing
+void Game2maybe::run(char input[]){
     srand(time(NULL));
     clear();
     ships();
 
-    int pos1;
-    int pos2;
+    int pos1 = input[0];
+    int pos2 = input[2];
 
     char prompt;
 

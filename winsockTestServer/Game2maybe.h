@@ -2,8 +2,8 @@
 // Created by ivand on 12/20/2018.
 //
 
-#ifndef WINSOCKTESTSERVER_GAME2MAYBE_H
-#define WINSOCKTESTSERVER_GAME2MAYBE_H
+#ifndef MINIPROJECT_PCSS_GAME2MAYBE_H
+#define MINIPROJECT_PCSS_GAME2MAYBE_H
 
 #include <iostream>
 #include <ctime>
@@ -25,7 +25,7 @@ public:
     void ships();
     bool attack(int x, int y);
     int numberOfShips();
-    void run();
+    void run(char input[]);
 };
 
 

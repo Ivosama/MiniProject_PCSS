@@ -36,9 +36,6 @@ unsigned __stdcall ClientSession(void *data)
     int iResult;
     DeviceConnected connectedDevice = *(DeviceConnected*)data;
 
-    connectedDevice.clear();
-    connectedDevice.show();
-
     int deviceNumber = connectedDevice.deviceNumber;
     SOCKET ClientSocket = connectedDevice.ClientSocket;
     //SOCKET ClientSocket = connectedDevice.ClientSocket;
