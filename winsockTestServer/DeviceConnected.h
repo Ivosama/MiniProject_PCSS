@@ -15,11 +15,14 @@
 
 class DeviceConnected {
 public:
+
     int deviceNumber;
     HANDLE hThread;
     SOCKET ClientSocket = INVALID_SOCKET;
     DeviceConnected();
     DeviceConnected(SOCKET _ClientSocket);
+    void clear();
+    void show();
     void sendMessageClient(char message[]);
     //void ClientSession(SOCKET ClientSocket);
     //unsigned __stdcall ClientSession(void *data);

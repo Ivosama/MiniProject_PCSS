@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <process.h>
 
+
 // Need to link with Ws2_32.lib
 //#pragma comment (lib, "Ws2_32.lib")
 // #pragma comment (lib, "Mswsock.lib")
@@ -23,6 +24,7 @@
 using namespace std;
 
 DeviceConnected::DeviceConnected(SOCKET _ClientSocket) {
+
     ClientSocket = _ClientSocket;
     deviceNumber = ConnectedDeviceList::size;
     //ClientSession(ClientSocket);

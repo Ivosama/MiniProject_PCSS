@@ -4,7 +4,7 @@ project(winsockTestServer)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(winsockTestServer
-        main.cpp DeviceConnected.cpp DeviceConnected.h ConnectedDeviceList.cpp ConnectedDeviceList.h Game.cpp Game.h)
+        main.cpp DeviceConnected.cpp DeviceConnected.h ConnectedDeviceList.cpp ConnectedDeviceList.h Game.cpp Game.h Game2maybe.cpp Game2maybe.h)
 
 
 

@@ -3,8 +3,8 @@
 #define WIN32_LEAN_AND_MEAN
 
 #include <iostream>
-#include <windows.h>
 #include <winsock2.h>
+#include <windows.h>
 #include <ws2tcpip.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -14,6 +14,8 @@
 #include "ConnectedDeviceList.h"
 
 #include "Game.h"
+
+#include "Game2maybe.h"
 
 // Need to link with Ws2_32.lib
 //#pragma comment (lib, "Ws2_32.lib")
@@ -33,6 +35,10 @@ unsigned __stdcall ClientSession(void *data)
 {
     int iResult;
     DeviceConnected connectedDevice = *(DeviceConnected*)data;
+
+    connectedDevice.clear();
+    connectedDevice.show();
+
     int deviceNumber = connectedDevice.deviceNumber;
     SOCKET ClientSocket = connectedDevice.ClientSocket;
     //SOCKET ClientSocket = connectedDevice.ClientSocket;
@@ -192,6 +198,7 @@ int __cdecl main(void)
         connectedDeviceList.tail_insert(ClientSocket);
         unsigned threadID = ConnectedDeviceList::size;
         HANDLE hThread = (HANDLE)_beginthreadex(NULL, 0, &ClientSession, (void*)connectedDeviceList.tail_ptr->connectedDevice, 0, &threadID);
+
     }
 
 
