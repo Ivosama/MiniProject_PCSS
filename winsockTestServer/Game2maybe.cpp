@@ -69,7 +69,7 @@ int Game2maybe::numberOfShips(){
     }
     return c;
 }
-//Runs the game, the whole thing
+//Runs the game, the whole thing, takes receive buff as input and transform it into integers to put in the attack function
 void Game2maybe::run(char input[]){
     srand(time(NULL));
     clear();

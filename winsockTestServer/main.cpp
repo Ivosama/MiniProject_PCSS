@@ -56,9 +56,6 @@ unsigned __stdcall ClientSession(void *data)
             // Echo the buffer back to the sender
             iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
 
-            // Game stuff
-            game.run();
-
 
             if (iSendResult == SOCKET_ERROR) {
                 printf("send failed with error: %d\n", WSAGetLastError());
@@ -73,7 +70,15 @@ unsigned __stdcall ClientSession(void *data)
             string recvString(recvbuf);
             string prefix = "prefix";
             string messageWithUser = "--[reply]--User " + to_string(deviceNumber)+ " sent message: " + recvString;
+
+
+
             cout << messageWithUser << endl;
+
+            // Game stuff
+            game.run(recvbuf);
+
+
         } else if (iResult == 0){
 
             iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
