@@ -29,7 +29,9 @@ using namespace std;
 
 ConnectedDeviceList connectedDeviceList;
 
-Game game;
+//Game game;
+
+Game2maybe game;
 
 unsigned __stdcall ClientSession(void *data)
 {
@@ -55,9 +57,7 @@ unsigned __stdcall ClientSession(void *data)
             iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
 
             // Game stuff
-
-
-
+            game.run();
 
 
             if (iSendResult == SOCKET_ERROR) {

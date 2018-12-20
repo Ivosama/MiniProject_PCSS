@@ -99,6 +99,7 @@ int __cdecl main(int argc, char **argv)
         //strcpy(tab2, sendString.c_str());
 
         iResult = send( ConnectSocket, input, (int)sizeof(input), 0 );
+        send( ConnectSocket, "This is a test", 14, 0);
 
         //iResult = send( ConnectSocket, sendbuf, (int)strlen(sendbuf), 0 );
         if (iResult == SOCKET_ERROR) {
@@ -129,9 +130,9 @@ int __cdecl main(int argc, char **argv)
     do {
         iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
         if (!strcmp(recvbuf, "exit")) break;
-        cout << recvbuf << endl;
+        cout << recvbuf << "first thing" << endl;
         if (!strncmp(recvbuf, "--[reply]--", 4)) {
-            cout << recvbuf << endl;
+            cout << recvbuf << "second thing" << endl;
         }
 
         if ( iResult > 0 ){
@@ -151,6 +152,7 @@ int __cdecl main(int argc, char **argv)
     string recString(recvbuf);
     cout<<recString<<endl;
 
+    cout << iResult << endl;
     // cleanup
     closesocket(ConnectSocket);
     WSACleanup();
