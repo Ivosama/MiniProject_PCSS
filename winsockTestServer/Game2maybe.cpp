@@ -69,6 +69,8 @@ int Game2maybe::numberOfShips(){
     }
     return c;
 }
+
+
 //Runs the game, the whole thing, takes receive buff as input and transform it into integers to put in the attack function
 //Need to transform those char into integers, I think now we are getting ASCII values which would be 49 for 1, and that is not valid.
 void Game2maybe::run(char input[]){

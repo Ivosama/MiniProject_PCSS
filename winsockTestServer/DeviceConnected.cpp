@@ -33,5 +33,6 @@ DeviceConnected::DeviceConnected(SOCKET _ClientSocket) {
 }
 
 void DeviceConnected::sendMessageClient(char message[]) {
-    send(ClientSocket, message, DEFAULT_BUFLEN, 0);
+    *pmessage = message;
+    send(ClientSocket, *pmessage, sizeof(message), 0);
 }

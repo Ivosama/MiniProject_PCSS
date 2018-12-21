@@ -210,3 +210,14 @@ int __cdecl main(void)
     //closesocket(ListenSocket);
 
 }
+
+void updateClients(int c1, int c2, int p, int hit){ //c1 and c2 = co-ords, p = playerID, hit = hit or miss
+    printf("Attempting to send data to clients\n");
+    iResult = sendto(SendSocket,
+                     SendBuf, BufLen, 0, (SOCKADDR *) &amp; RecvAddr, sizeof (RecvAddr));
+    if (iResult == SOCKET_ERROR) {
+        printf("sendto failed with error: %d\n", WSAGetLastError());
+        closesocket(SendSocket);
+        WSACleanup();
+        return 1;
+}
