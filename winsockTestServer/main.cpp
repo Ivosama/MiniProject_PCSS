@@ -1,6 +1,9 @@
 #undef UNICODE
 
-#define WIN32_LEAN_AND_MEAN
+//#define WIN32_LEAN_AND_MEAN
+
+#define _WIN32_WINNT
+#define _WIN32_WINNT 0x501
 
 #include <iostream>
 #include <winsock2.h>
@@ -15,7 +18,7 @@
 
 #include "Game.h"
 
-#include "Game2maybe.h"
+//#include "Game2maybe.h"
 
 // Need to link with Ws2_32.lib
 //#pragma comment (lib, "Ws2_32.lib")
@@ -29,9 +32,9 @@ using namespace std;
 
 ConnectedDeviceList connectedDeviceList;
 
-//Game game;
+Game game;
 
-Game2maybe game;
+//Game2maybe game;
 
 unsigned __stdcall ClientSession(void *data)
 {
@@ -76,7 +79,9 @@ unsigned __stdcall ClientSession(void *data)
             cout << messageWithUser << endl;
 
             // Game stuff
-            game.run(recvbuf);
+            //game.run(recvbuf);
+
+            int result = game.resolveRound(recvbuf);
 
 
         } else if (iResult == 0){
@@ -209,15 +214,4 @@ int __cdecl main(void)
     // No longer need server socket
     //closesocket(ListenSocket);
 
-}
-
-void updateClients(int c1, int c2, int p, int hit){ //c1 and c2 = co-ords, p = playerID, hit = hit or miss
-    printf("Attempting to send data to clients\n");
-    iResult = sendto(SendSocket,
-                     SendBuf, BufLen, 0, (SOCKADDR *) &amp; RecvAddr, sizeof (RecvAddr));
-    if (iResult == SOCKET_ERROR) {
-        printf("sendto failed with error: %d\n", WSAGetLastError());
-        closesocket(SendSocket);
-        WSACleanup();
-        return 1;
 }
