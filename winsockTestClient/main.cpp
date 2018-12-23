@@ -1,4 +1,7 @@
-#define WIN32_LEAN_AND_MEAN
+//#define WIN32_LEAN_AND_MEAN
+
+#define _WIN32_WINNT
+#define _WIN32_WINNT 0x501
 
 #include <iostream>
 #include <windows.h>
@@ -68,6 +71,7 @@ int __cdecl main(int argc, char **argv)
         if (ConnectSocket == INVALID_SOCKET) {
             printf("socket failed with error: %d\n", WSAGetLastError());
             WSACleanup();
+            std::printf("Invalid socket");
             return 1;
         }
 
@@ -76,6 +80,7 @@ int __cdecl main(int argc, char **argv)
         if (iResult == SOCKET_ERROR) {
             closesocket(ConnectSocket);
             ConnectSocket = INVALID_SOCKET;
+            std::printf("Socket error");
             continue;
         }
         break;
@@ -86,6 +91,7 @@ int __cdecl main(int argc, char **argv)
     if (ConnectSocket == INVALID_SOCKET) {
         printf("Unable to connect to server!\n");
         WSACleanup();
+        std::printf("Invalid socket");
         return 1;
     }
 

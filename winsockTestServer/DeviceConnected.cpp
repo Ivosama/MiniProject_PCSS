@@ -34,7 +34,6 @@ DeviceConnected::DeviceConnected(SOCKET _ClientSocket) {
 /*
  * Commented out as it gave some compiler errors, might be fixable
 void DeviceConnected::sendMessageClient(char message[]) {
-    *pmessage = message;
-    send(ClientSocket, *pmessage, sizeof(message), 0);
+    send(ClientSocket, message, DEFAULT_BUFLEN, 0);
 }
 */
