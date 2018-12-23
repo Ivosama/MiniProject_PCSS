@@ -1,229 +1,156 @@
-#undef UNICODE
-
-#define WIN32_LEAN_AND_MEAN
-
 #include <iostream>
-#include <winsock2.h>
-#include <windows.h>
-#include <ws2tcpip.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <WS2tcpip.h>
 #include <string>
-#include <vector>
+#include <sstream>
 
-#include "ConnectedDeviceList.h"
-
-#include "Game.h"
-
-#include "Game2maybe.h"
-
-// Need to link with Ws2_32.lib
-//#pragma comment (lib, "Ws2_32.lib")
-// #pragma comment (lib, "Mswsock.lib")
-
-#define DEFAULT_BUFLEN 512
-#define DEFAULT_PORT "27015"
-//extern const int DEFAULT_BUFLEN = 512;
+#pragma comment (lib, "ws2_32.lib")
 
 using namespace std;
 
-ConnectedDeviceList connectedDeviceList;
-
-//Game game;
-
-Game2maybe game;
-
-unsigned __stdcall ClientSession(void *data)
+int main()
 {
-    int iResult;
-    DeviceConnected connectedDevice = *(DeviceConnected*)data;
+    // Initialze winsock
+    WSADATA wsData;
+    WORD ver = MAKEWORD(2, 2);
 
-    int deviceNumber = connectedDevice.deviceNumber;
-    SOCKET ClientSocket = connectedDevice.ClientSocket;
-    //SOCKET ClientSocket = connectedDevice.ClientSocket;
-    int iSendResult;
-    char recvbuf[DEFAULT_BUFLEN];
-    int recvbuflen = DEFAULT_BUFLEN;
-    //deviceNumber = ConnectedDeviceList::size;
-
-    cout << deviceNumber << " Up to the loop" << endl;
-
-    // Receive until the peer shuts down the connection
-    // Loop in which data is received
-    do {
-
-        iResult = recv(ClientSocket, recvbuf, recvbuflen, 0);
-        if (iResult > 0) {
-            //printf("Bytes received: %d\n", iResult);
-            printf(recvbuf);    // prints the received data, not neccessary probably
-
-            // Echo the buffer back to the sender / send data back to the client
-            iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
-            send(ClientSocket, "Pls send", 8, 0);
-            cout << "message " << recvbuf << " sent back to client" << endl;
-
-
-            if (iSendResult == SOCKET_ERROR) {
-                printf("send failed with error: %d\n", WSAGetLastError());
-                closesocket(ClientSocket);
-                WSACleanup();
-                return 1;
-            }
-            //printf("Bytes sent: %d\n", iSendResult);
-            if (!strncmp(recvbuf, "--", 2)) {
-                connectedDeviceList.printValues();
-            }
-            string recvString(recvbuf);
-            string prefix = "prefix";
-            string messageWithUser = "--[reply]--User " + to_string(deviceNumber)+ " sent message: " + recvString;
-
-
-
-            cout << messageWithUser << endl;
-
-            // Game stuff
-           //game.run(recvbuf);
-
-
-        } else if (iResult == 0){
-
-            iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
-            cout << "User " << deviceNumber << " left the room" << endl;
-            connectedDeviceList.deleteListItem(deviceNumber);
-            if (iSendResult == SOCKET_ERROR) {
-                printf("send failed with error: %d\n", WSAGetLastError());
-                closesocket(ClientSocket);
-                WSACleanup();
-                return 1;
-            }
-            break;
-        }
-            //printf("Connection closing...\n");
-        else  {
-            printf("recv failed with error: %d\n", WSAGetLastError());
-            closesocket(ClientSocket);
-            WSACleanup();
-            return 1;
-        }
-
-        //} while (iResult > 0);
-    } while (1);
-
-    /*
-
-    // shutdown the connection since we're done
-    iResult = shutdown(ClientSocket, SD_SEND);
-    if (iResult == SOCKET_ERROR) {
-        printf("shutdown failed with error: %d\n", WSAGetLastError());
-        closesocket(ClientSocket);
-        WSACleanup();
+    int wsOk = WSAStartup(ver, &wsData);
+    if (wsOk != 0)
+    {
+        cerr << "Can't Initialize winsock! Quitting" << endl;
         return 1;
     }
 
-    // cleanup
-    closesocket(ClientSocket);
+    // Create a socket
+    SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
+    if (listening == INVALID_SOCKET)
+    {
+        cerr << "Can't create a socket! Quitting" << endl;
+        return 1;
+    }
+
+    // Bind the ip address and port to a socket
+    sockaddr_in hint;
+    hint.sin_family = AF_INET;
+    hint.sin_port = htons(27015);
+    hint.sin_addr.S_un.S_addr = INADDR_ANY; // Could also use inet_pton ....
+
+    bind(listening, (sockaddr*)&hint, sizeof(hint));
+
+    // Tell Winsock the socket is for listening
+    listen(listening, SOMAXCONN);
+
+    // Create the master file descriptor set and zero it
+    fd_set master;
+    FD_ZERO(&master);
+
+    // Add the first socket as listening
+    FD_SET(listening, &master);
+
+    // this will be changed by the \quit command below, which can bbe sent from client to server - Remember the \
+
+    bool running = true;
+
+    while (running)
+    {
+        fd_set copy = master;
+
+        //Amount of sockets
+        int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
+
+        // Loop through all the current connections / potential connections
+        for (int i = 0; i < socketCount; i++)
+        {
+            // Copy socket object from array
+            SOCKET sock = copy.fd_array[i];
+
+            // Is it an incoming connection?
+            if (sock == listening)
+            {
+                // Accept a new connection
+                SOCKET client = accept(listening, nullptr, nullptr);
+
+                // Add the new connection to the list of connected clients
+                FD_SET(client, &master);
+
+                // Send a welcome message to the connected client
+                string welcomeMsg = "Welcome to the motherfucking only server that works!\r\n";
+                send(client, welcomeMsg.c_str(), welcomeMsg.size() + 1, 0);
+            }
+            else // It's an incoming message
+            {
+                char buf[4096];
+                ZeroMemory(buf, 4096);
+
+                // Receive message
+                int bytesIn = recv(sock, buf, 4096, 0);
+
+                if (bytesIn <= 0)
+                {
+                    // close socket if not receiving anything
+                    printf("Dropping client");
+                    closesocket(sock);
+                    FD_CLR(sock, &master);
+                }
+                else
+                {
+                    // Check to see if it's a command. \quit kills the server
+                    if (buf[0] == '\\')
+                    {
+                        // Is the command quit?
+                        string cmd = string(buf, bytesIn);
+                        std::cout << (cmd);
+                        if (cmd == "\\quit")
+                        {
+                            running = false;
+                            break;
+                        }
+
+                        // Put other commands here
+                        continue;
+                    }
+
+                    // Send message to other clients, and NOT the listening socket
+
+                    for (int i = 0; i < master.fd_count; i++)
+                    {
+                        SOCKET outSock = master.fd_array[i];
+                        if (outSock != listening && outSock != sock)
+                        {
+                            ostringstream ss;
+                            ss << "SOCKET #" << sock << ": " << buf << "\r\n";
+                            string strOut = ss.str();
+
+                            send(outSock, strOut.c_str(), strOut.size() + 1, 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Remove the listening socket from the master file descriptor and close it
+    // to prevent anyone else trying to connect.
+    FD_CLR(listening, &master);
+    closesocket(listening);
+
+    // Message to let users know if shutting down.
+    string msg = "Server is shutting down. Goodbye\r\n";
+
+    while (master.fd_count > 0)
+    {
+        // Get the socket number
+        SOCKET sock = master.fd_array[0];
+
+        // Send the goodbye message
+        send(sock, msg.c_str(), msg.size() + 1, 0);
+
+        // Remove it from the master file list and close the socket
+        FD_CLR(sock, &master);
+        closesocket(sock);
+    }
+
+    // Cleanup winsock
     WSACleanup();
-     */
-    _endthreadex(0);
-    return 0;
+
+    system("pause");
 }
-
-
-int __cdecl main(void)
-{
-    WSADATA wsaData;
-    int iResult;
-
-    SOCKET ListenSocket = INVALID_SOCKET;
-    SOCKET ClientSocket = INVALID_SOCKET;
-
-    struct addrinfo *result = NULL;
-    struct addrinfo hints;
-
-
-
-    // Initialize Winsock
-    iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
-    if (iResult != 0) {
-        printf("WSAStartup failed with error: %d\n", iResult);
-        return 1;
-    }
-
-    ZeroMemory(&hints, sizeof(hints));
-    hints.ai_family = AF_INET;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_protocol = IPPROTO_TCP;
-    hints.ai_flags = AI_PASSIVE;
-
-    // Resolve the server address and port
-    iResult = getaddrinfo(NULL, DEFAULT_PORT, &hints, &result);
-    if ( iResult != 0 ) {
-        printf("getaddrinfo failed with error: %d\n", iResult);
-        WSACleanup();
-        return 1;
-    }
-
-    // Create a SOCKET for connecting to server
-    ListenSocket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
-    if (ListenSocket == INVALID_SOCKET) {
-        printf("socket failed with error: %d\n", WSAGetLastError());
-        freeaddrinfo(result);
-        WSACleanup();
-        return 1;
-    }
-
-    // Setup the TCP listening socket
-    iResult = bind( ListenSocket, result->ai_addr, (int)result->ai_addrlen);
-    if (iResult == SOCKET_ERROR) {
-        printf("bind failed with error: %d\n", WSAGetLastError());
-        freeaddrinfo(result);
-        closesocket(ListenSocket);
-        WSACleanup();
-        return 1;
-    }
-
-    freeaddrinfo(result);
-
-    iResult = listen(ListenSocket, SOMAXCONN);
-    if (iResult == SOCKET_ERROR) {
-        printf("listen failed with error: %d\n", WSAGetLastError());
-        closesocket(ListenSocket);
-        WSACleanup();
-        return 1;
-    }
-
-    cout << "past listening" << endl;
-
-    // Accept a client socket
-    while (ClientSocket = accept(ListenSocket, NULL, NULL)) {
-        // Create a new thread for the accepted client (also pass the accepted client socket).
-        if (ClientSocket == INVALID_SOCKET) {
-            printf("accept failed with error: %d\n", WSAGetLastError());
-            closesocket(ListenSocket);
-            WSACleanup();
-            return 1;
-        }
-        connectedDeviceList.tail_insert(ClientSocket);
-        unsigned threadID = ConnectedDeviceList::size;
-        HANDLE hThread = (HANDLE)_beginthreadex(NULL, 0, &ClientSession, (void*)connectedDeviceList.tail_ptr->connectedDevice, 0, &threadID);
-
-    }
-
-
-    cout << "Past accept" << endl;
-
-    // No longer need server socket
-    //closesocket(ListenSocket);
-
-}
-
-/* void updateClients(int c1, int c2, int p, int hit){ //c1 and c2 = co-ords, p = playerID, hit = hit or miss
-    printf("Attempting to send data to clients\n");
-    iResult = sendto(SendSocket,
-                     SendBuf, BufLen, 0, (SOCKADDR *) &amp; RecvAddr, sizeof (RecvAddr));
-    if (iResult == SOCKET_ERROR) {
-        printf("sendto failed with error: %d\n", WSAGetLastError());
-        closesocket(SendSocket);
-        WSACleanup();
-        return 1;
-} */
