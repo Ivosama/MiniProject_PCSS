@@ -96,7 +96,8 @@ void ConnectedDeviceList::init_insert(SOCKET ClientSocket) {
     linklist_ptr->connectedDevice = new DeviceConnected(ClientSocket);
     linklist_ptr->link = NULL;
 }
-
+/*
+ * Commented out as it gave some compiler errors, might be fixable
 void ConnectedDeviceList::sendAllClients(char message[]) {
     if (sizeof(message) > DEFAULT_BUFLEN) {
         cout << "Message too long to send to all" << endl;
@@ -106,4 +107,4 @@ void ConnectedDeviceList::sendAllClients(char message[]) {
             iter->connectedDevice->sendMessageClient(message);
         }
     }
-}
+} */

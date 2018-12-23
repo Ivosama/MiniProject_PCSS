@@ -45,16 +45,22 @@ unsigned __stdcall ClientSession(void *data)
     char recvbuf[DEFAULT_BUFLEN];
     int recvbuflen = DEFAULT_BUFLEN;
     //deviceNumber = ConnectedDeviceList::size;
+
     cout << deviceNumber << " Up to the loop" << endl;
+
     // Receive until the peer shuts down the connection
+    // Loop in which data is received
     do {
 
         iResult = recv(ClientSocket, recvbuf, recvbuflen, 0);
         if (iResult > 0) {
             //printf("Bytes received: %d\n", iResult);
+            printf(recvbuf);    // prints the received data, not neccessary probably
 
-            // Echo the buffer back to the sender
+            // Echo the buffer back to the sender / send data back to the client
             iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
+            send(ClientSocket, "Pls send", 8, 0);
+            cout << "message " << recvbuf << " sent back to client" << endl;
 
 
             if (iSendResult == SOCKET_ERROR) {
@@ -76,7 +82,7 @@ unsigned __stdcall ClientSession(void *data)
             cout << messageWithUser << endl;
 
             // Game stuff
-            game.run(recvbuf);
+           //game.run(recvbuf);
 
 
         } else if (iResult == 0){
@@ -211,7 +217,7 @@ int __cdecl main(void)
 
 }
 
-void updateClients(int c1, int c2, int p, int hit){ //c1 and c2 = co-ords, p = playerID, hit = hit or miss
+/* void updateClients(int c1, int c2, int p, int hit){ //c1 and c2 = co-ords, p = playerID, hit = hit or miss
     printf("Attempting to send data to clients\n");
     iResult = sendto(SendSocket,
                      SendBuf, BufLen, 0, (SOCKADDR *) &amp; RecvAddr, sizeof (RecvAddr));
@@ -220,4 +226,4 @@ void updateClients(int c1, int c2, int p, int hit){ //c1 and c2 = co-ords, p = p
         closesocket(SendSocket);
         WSACleanup();
         return 1;
-}
+} */

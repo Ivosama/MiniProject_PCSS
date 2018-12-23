@@ -77,36 +77,37 @@ void Game2maybe::run(char input[]){
     srand(time(NULL));
     clear();
     ships();
+    show();
 
-    int pos1 = input[0] - 48;
-    int pos2 = input[2] - 48;
+    int pos1 = input[0]-48;
+    int pos2 = input[2]-48;
 
-    //char prompt;
+    char prompt;
 
     while(1){
         //std::cout << "Please input a location: "; std::cin >> pos1 >> pos2;
 
-        if(attack(pos1, pos2))
+        if(attack(pos1, pos2)) {
             std::cout << "You wasted a fool" << std::endl;
-
-            //cout << "Do you want to continue? (y/n) "; cin >> prompt;
-            //if(prompt == 'n')
-            //   break;
-
-        else
+            std::cout << "Do you want to continue? (y/n) "; std::cin >> prompt;
+            if(prompt == 'n')
+               break;
+        }
+        else {
             std::cout << "No lucky for you, ploplo" << std::endl;
+        }
 
         std::cout << "Number of ships left " << numberOfShips() << std::endl;
-        //std::cout << "Do you want to continue? (y/n) "; std::cin >> prompt;
-        //if(prompt == 'n')
-            //break;
-
-
+        /*
+        std::cout << "Do you want to continue? (y/n) "; std::cin >> prompt;
+        if(prompt == 'n')
+            break;
+        */
         if(numberOfShips()== 0)
             break;
 
     }
-    std::cout << "Game Over bitch" << std::endl;
+    std::cout << "Game Over, bitch" << std::endl;
     system("pause");
 }
 

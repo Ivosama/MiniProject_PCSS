@@ -82,15 +82,15 @@ int __cdecl main(int argc, char **argv)
     }
 
     freeaddrinfo(result);
-
+    // If there is no socket,
     if (ConnectSocket == INVALID_SOCKET) {
         printf("Unable to connect to server!\n");
         WSACleanup();
         return 1;
     }
 
-    // Send an initial buffer
-    char input[512];
+    // Loop for sending and receiving data
+    char input[512];    // declares how big the input can be in chars
     do{
         char input[512];
         cout<< "Enter a message to send to server: (max 512 characters)\n";
@@ -98,24 +98,31 @@ int __cdecl main(int argc, char **argv)
         //char tab2[1024];
         //strcpy(tab2, sendString.c_str());
 
+        // The user input is sent to the server here
         iResult = send( ConnectSocket, input, (int)sizeof(input), 0 );
-        send( ConnectSocket, "This is a test", 14, 0);
 
-        //iResult = send( ConnectSocket, sendbuf, (int)strlen(sendbuf), 0 );
+        // Check whether the socket is valid, otherwise, close it
         if (iResult == SOCKET_ERROR) {
             printf("send failed with error: %d\n", WSAGetLastError());
             closesocket(ConnectSocket);
             WSACleanup();
             return 1;
         }
-
+        // If the user inputs exit, shut down the program/ leave the server
         if (!strcmp(input, "exit")) {
             break;
         }
+
         //cout << strcmp(input, "exit") << endl;
         //printf("Bytes Sent: %ld\n", iResult);
+
+        // Print the received data
+        recv(ConnectSocket, recvbuf, recvbuflen, 0);
+        cout << recvbuf << endl;
     } while(1);
 
+    // Troubleshooting, shows whether the loop is still going, should only EVER show up if user writes "exit"
+    cout << "send/receive ended" << endl;
 
     // shutdown the connection since no more data will be sent
     iResult = shutdown(ConnectSocket, SD_SEND);
@@ -126,9 +133,15 @@ int __cdecl main(int argc, char **argv)
         return 1;
     }
 
+    /*
+     * Old receive do-while loop - was never reached, so moved receive to the send do-while loop
+     *
     // Receive until the peer closes the connection
+    cout << "just before the do-while receiving" << endl;
     do {
+        cout << "receiving message" << endl;
         iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
+        cout << "message received" << endl;
         if (!strcmp(recvbuf, "exit")) break;
         cout << recvbuf << "first thing" << endl;
         if (!strncmp(recvbuf, "--[reply]--", 4)) {
@@ -149,10 +162,13 @@ int __cdecl main(int argc, char **argv)
     //} while( iResult > 0 );
     } while(1);
 
+    Was supposed to print the stuff which was received, now redundant
     string recString(recvbuf);
     cout<<recString<<endl;
 
     cout << iResult << endl;
+     */
+
     // cleanup
     closesocket(ConnectSocket);
     WSACleanup();

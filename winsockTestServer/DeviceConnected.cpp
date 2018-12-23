@@ -31,8 +31,10 @@ DeviceConnected::DeviceConnected(SOCKET _ClientSocket) {
     //unsigned threadID = ConnectedDeviceList::size;
     //hThread = (HANDLE)DeviceConnected::_beginthreadex(NULL, 0, &DeviceConnected::ClientSession, (void*)ClientSocket, 0, &threadID);
 }
-
+/*
+ * Commented out as it gave some compiler errors, might be fixable
 void DeviceConnected::sendMessageClient(char message[]) {
     *pmessage = message;
     send(ClientSocket, *pmessage, sizeof(message), 0);
 }
+*/
