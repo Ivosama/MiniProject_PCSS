@@ -1,0 +1,22 @@
+TASKS TO DO:
+
+Integrate clientGame properly in client main so it runs
+
+Connect it properly with server so messages can be passed between clients
+
+Replace enemy map generation with the map the enemy player sends (spawnShips(1)) (around line 279)
+	- I'll try to make a function to convert the map array into a 100-long char array (10x10 to 100x1) so it's easier to send as a message, and then another one to convert it back
+	
+Add manual ship placement in the place where it asks player if they want to manually place (around line 270)
+	
+Replace "system("pause")" with code to wait for server to say whose turn it is. Don't want both players taking their turns at the same time...
+
+When the client detects they've won, send a message to tell the other client they suck (after checkVictory, line 308)
+
+Send attack info to server (there's comments in the code where this needs to happen, currently around line 315)
+
+Receive enemy attack info and process it (currently around line 288 but maybe can be changed)
+	- The function to process enemy attacks exists and should work, just needs to be given actual inputs. Use attackTarget(int, int, int), where the first two ints are co-ords, and the last is which player is shooting. 0 means this client is shooting the enemy, 1 means enemy is shooting this client.
+	- Remember that sometimes this client will go first, so it should only process enemy move if the enemy actually does a move.
+	
+	
