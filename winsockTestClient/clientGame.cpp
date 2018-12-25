@@ -72,6 +72,7 @@ int randomDirection(){
     return temp;    //returns -1 or +1
 }
 
+//places one ship on a map. length is length of the ship, p is which player's map to place it on (0 for p1, else p2)
 void placeOne(int length, int p){
     bool success = false;
     int nextShipSize = length-1;
@@ -196,7 +197,7 @@ void clearTempMap(){
 
 bool attackTarget(int x, int y){
     std::cout << "Firing on co-ordinates " << x << ", " << y << std::endl;
-    if(enemyMap[x][y] == 2){
+    if(enemyMap[x][y] >= 2){
         std::cout << "You've already shot there, try again..." << std::endl;
         return false;
     }
@@ -206,9 +207,9 @@ bool attackTarget(int x, int y){
     }
     if(enemyMap[x][y] == 1){
         std::cout << "Nice shot!" << std::endl;
-        enemyMap[x][y] = 2;
+        enemyMap[x][y] = 3;
     }
-    enemyMap[x][y] = 2;
+    //enemyMap[x][y] = 2;
     return true;
 }
 
@@ -243,13 +244,30 @@ int main() {
     //Initial setup, clear and generate map
     std::cout << "Randomly generated ships" << std::endl;
     clearMaps();
-    srand(time(0));
-    spawnShips(0);
-    spawnShips(1);
-    //spawnEasy(1);
+    srand(time(0)); //seeds random function
+    std::cout << "Do you want to place ships manually (type m) or randomly (type r)?" << std::endl;
+    while(!okay) {
+        cin >> input;
+        if(strlen(input) == 1) {    //make sure input is 1 character
+            if (input[0] == 82 || input[0] == 114) {    //if R or r
+                std::cout << "Spawning randomly" << std::endl;
+                spawnShips(0);
+                okay = true;
+            } else if (input[0] == 77 || input[0] == 109) {   //if M or m
+                std::cout << "Pretending to place ships manually" << std::endl;
+                spawnShips(0);//put manual ship placement function here
+                okay = true;
+            }
+        }
+        if(!okay){  //if invalid input
+            std::cout << "Invalid input. Please enter m or r" << std::endl;
+        }
+    }
+    spawnShips(1);  //spawns enemy ships. Replace with messages from server
+    //spawnEasy(1); //spawns one 2-length ship for testing
     showMyMap();
     showEnemyMap();
-    //showEnemyMapDebug();
+    //showEnemyMapDebug();  //shows enemy ship positions
     //actual game loop
     do{ //while the whole thing is running
         while(myTurn) {    //while it's this client's turn
