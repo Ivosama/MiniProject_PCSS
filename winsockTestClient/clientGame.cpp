@@ -195,22 +195,35 @@ void clearTempMap(){
     }
 }
 
-bool attackTarget(int x, int y){
-    std::cout << "Firing on co-ordinates " << x << ", " << y << std::endl;
-    if(enemyMap[x][y] >= 2){
-        std::cout << "You've already shot there, try again..." << std::endl;
-        return false;
+//processes attack on target. p is player. 0 if client is shooting, else enemy is shooting
+bool attackTarget(int x, int y, int p) {
+    if (p == 0) {
+        std::cout << "Firing on co-ordinates " << x << ", " << y << std::endl;
+        if (enemyMap[x][y] >= 2) {
+            std::cout << "You've already shot there, try again..." << std::endl;
+            return false;
+        }
+        if (enemyMap[x][y] == 0) {
+            std::cout << "You missed!" << std::endl;
+            enemyMap[x][y] = 2;
+        }
+        if (enemyMap[x][y] == 1) {
+            std::cout << "Nice shot!" << std::endl;
+            enemyMap[x][y] = 3;
+        }
+        //enemyMap[x][y] = 2;
+        return true;
     }
-    if(enemyMap[x][y] == 0){
-        std::cout << "You missed!" << std::endl;
-        enemyMap[x][y] = 2;
+    else{
+        if (myMap[x][y] == 0) {
+            std::cout << "The enemy has fired at " << x << "," << y  << "and missed!" << std::endl;
+            myMap[x][y] = 2;
+        }
+        if (myMap[x][y] == 1) {
+            std::cout << "The enemy has hit one of your ships at location: " << x << "," << y << std::endl;
+            myMap[x][y] = 3;
+        }
     }
-    if(enemyMap[x][y] == 1){
-        std::cout << "Nice shot!" << std::endl;
-        enemyMap[x][y] = 3;
-    }
-    //enemyMap[x][y] = 2;
-    return true;
 }
 
 //takes input and returns true if it's in format number,number
@@ -270,7 +283,9 @@ int main() {
     //showEnemyMapDebug();  //shows enemy ship positions
     //actual game loop
     do{ //while the whole thing is running
+        //showEnemyMap();
         system("pause");    //Replace this with server message to say when it's your turn. First turn should be randomly picked by server.
+        //attackTarget(4,4,1);  //Replace this with the message from enemy saying where they shot. Only happens if the enemy did a turn (sometimes this player goes first). Can assume it's a valid location because enemy client is checking that.
         myTurn = true;
         while(myTurn) {    //while it's this client's turn
             std::cout << "Enter co-ordinates to attack" << std::endl;
@@ -287,7 +302,7 @@ int main() {
                     std::cout << "Your input was shitty, try again: " << input << std::endl;
                 }
             } while (!okay);
-            myTurn = !attackTarget(firstNum - 48, secondNum - 48);  //if valid shot, returns true (myTurn false)
+            myTurn = !attackTarget(firstNum - 48, secondNum - 48, 0);  //if valid shot, returns true (myTurn false)
             showEnemyMap();
             //showEnemyMapDebug();
             if(checkVictory()){
@@ -298,9 +313,6 @@ int main() {
         }
         std::cout << "turn ending" << std::endl;
         std::cout << "Info to send to server: " << firstNum-'0' << "," << secondNum-'0' << std::endl;
-        //wait for server to say it's my turn again...
-        //also process the other player's turn here
-        //just assume the other player's turn is valid because their client is checking, and set myMap[i][j] to 2
     }while(running);
 
     std::cout << "Shutting down" << std::endl;
