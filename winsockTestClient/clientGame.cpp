@@ -270,6 +270,8 @@ int main() {
     //showEnemyMapDebug();  //shows enemy ship positions
     //actual game loop
     do{ //while the whole thing is running
+        system("pause");    //Replace this with server message to say when it's your turn. First turn should be randomly picked by server.
+        myTurn = true;
         while(myTurn) {    //while it's this client's turn
             std::cout << "Enter co-ordinates to attack" << std::endl;
             std::cout << "Do it like number,number or you're stupid" << std::endl;
@@ -299,8 +301,6 @@ int main() {
         //wait for server to say it's my turn again...
         //also process the other player's turn here
         //just assume the other player's turn is valid because their client is checking, and set myMap[i][j] to 2
-        system("pause");    //placeholder for wait for server
-        myTurn = true;
     }while(running);
 
     std::cout << "Shutting down" << std::endl;
