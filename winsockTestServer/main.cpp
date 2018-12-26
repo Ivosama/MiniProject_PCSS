@@ -83,6 +83,7 @@ int main()
 
                 // Receive message
                 int bytesIn = recv(sock, buf, 4096, 0);
+                cout << buf << endl;
 
                 if (bytesIn <= 0)
                 {

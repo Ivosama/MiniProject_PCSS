@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
 #include <WS2tcpip.h>
+#include "clientGame.h"
 #pragma comment(lib, "ws2_32.lib")
 
 using namespace std;
+clientGame game;
 
 int main()
 {
@@ -51,6 +53,7 @@ int main()
 	// Do-while loop to send and receive data
     do
     {
+        game.play();
         // Prompt the user for some text // USER ALWAYS HAS TO INPUT SOMETHING BEFORE RECEIVING ANYTHING // THIS SHOULD BE FIXED
         cout << "> ";
         getline(cin, userInput);

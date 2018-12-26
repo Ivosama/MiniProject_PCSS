@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <chrono>
 #include <thread>
+#include "clientGame.h"
 
 using namespace std;
 bool myTurn = true;
@@ -21,7 +22,7 @@ int firstNum = 0;
 int secondNum = 0;
 
 //turns myMap into a 100-long char array
-void compressMap(int map[10][10]){
+void clientGame::compressMap(int map[10][10]){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             comp[i*10+j] = myMap[i][j];
@@ -30,7 +31,7 @@ void compressMap(int map[10][10]){
 }
 
 //turns the char array back (from enemy) to a 10x10 int array for enemy map
-void expandMap(char temp[100]){
+void clientGame::expandMap(char temp[100]){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             enemyMap[i][j] = temp[i*10+j];
@@ -39,7 +40,7 @@ void expandMap(char temp[100]){
 }
 
 //Replaces temp map with my map
-void revertTemp(){
+void clientGame::revertTemp(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             tempMap[i][j] = myMap[i][j];
@@ -48,7 +49,7 @@ void revertTemp(){
 }
 
 //replaces my map with temp map
-void finalizeShip(){
+void clientGame::finalizeShip(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             myMap[i][j] = tempMap[i][j];
@@ -57,14 +58,14 @@ void finalizeShip(){
 }
 
 //temporary functions for generating enemy maps
-void finalizeShipEnemy(){
+void clientGame::finalizeShipEnemy(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             enemyMap[i][j] = tempMap[i][j];
         }
     }
 }
-void revertTempEnemy(){
+void clientGame::revertTempEnemy(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             tempMap[i][j] = enemyMap[i][j];
@@ -73,7 +74,7 @@ void revertTempEnemy(){
 }
 
 //checks if given value is between 0 and 9 (in range of the map arrays)
-bool inRange(int temp){
+bool clientGame::inRange(int temp){
     if(temp <= rows-1 && temp >= 0){
         return true;
     }
@@ -83,7 +84,7 @@ bool inRange(int temp){
 }
 
 //Returns -1 or +1, to be used twice when generating ships (left/right, up/down)
-int randomDirection(){
+int clientGame::randomDirection(){
     //srand(time(0));
     int temp = rand() % 2;  //randoms 0 or 1
     temp = temp * 2;    //doubles. 0 to 0, 1 to 2
@@ -92,7 +93,7 @@ int randomDirection(){
 }
 
 //places one ship on a map. length is length of the ship, p is which player's map to place it on (0 for p1, else p2)
-void placeOne(int length, int p){
+void clientGame::placeOne(int length, int p){
     bool success = false;
     int nextShipSize = length-1;
     bool validPos = true;
@@ -149,7 +150,7 @@ void placeOne(int length, int p){
 }
 
 //Spawns ships randomly on the grid. 1x5, 2x4, 3x3
-void spawnShips(int p){
+void clientGame::spawnShips(int p){
     placeOne(5,p);
     placeOne(4,p);
     placeOne(4,p);
@@ -159,11 +160,11 @@ void spawnShips(int p){
 }
 
 //spawns just one 2-length ship for testing
-void spawnEasy(int p){
+void clientGame::spawnEasy(int p){
     placeOne(2,p);
 }
 
-void showMyMap(){
+void clientGame::showMyMap(){
     std::cout << "Your map" << std::endl;
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
@@ -174,7 +175,7 @@ void showMyMap(){
 }
 
 //displays enemy map, with ships hidden
-void showEnemyMap(){
+void clientGame::showEnemyMap(){
     std::cout << "Enemy map" << std::endl;
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
@@ -188,7 +189,7 @@ void showEnemyMap(){
 }
 
 //displays enemy map with ships visible
-void showEnemyMapDebug(){
+void clientGame::showEnemyMapDebug(){
     std::cout << "Enemy map" << std::endl;
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
@@ -198,7 +199,7 @@ void showEnemyMapDebug(){
     }
 }
 
-void clearMaps(){
+void clientGame::clearMaps(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             myMap[i][j] = 0;
@@ -206,7 +207,7 @@ void clearMaps(){
         }
     }
 }
-void clearTempMap(){
+void clientGame::clearTempMap(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             tempMap[i][j] = 0;
@@ -215,7 +216,7 @@ void clearTempMap(){
 }
 
 //processes attack on target. p is player. 0 if client is shooting, else enemy is shooting
-bool attackTarget(int x, int y, int p) {
+bool clientGame::attackTarget(int x, int y, int p) {
     if (p == 0) {
         std::cout << "Firing on co-ordinates " << x << ", " << y << std::endl;
         if (enemyMap[x][y] >= 2) {
@@ -246,7 +247,7 @@ bool attackTarget(int x, int y, int p) {
 }
 
 //takes input and returns true if it's in format number,number
-bool checkValidInput(char in[]){
+bool clientGame::checkValidInput(char in[]){
     if(strlen(input) == 3){
         //std::cout << "String is correct length" << std::endl;
         if (isdigit(in[0]) && isdigit(in[2])){  //Checks first and third chars to see if they're numbers
@@ -261,7 +262,7 @@ bool checkValidInput(char in[]){
 }
 
 //returns false if it finds any enemy ships remaining, else true
-bool checkVictory(){
+bool clientGame::checkVictory(){
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<col; j++){
             if(enemyMap[i][j] == 1){
@@ -272,7 +273,7 @@ bool checkVictory(){
     return true;
 }
 
-int main() {
+int clientGame::play() {
     //Initial setup, clear and generate map
     std::cout << "Randomly generated ships" << std::endl;
     clearMaps();
