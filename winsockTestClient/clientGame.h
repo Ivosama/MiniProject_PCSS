@@ -23,7 +23,7 @@ public:
     int enemyMap[10][10];
     int rows = 10;
     int col = 10;
-    //char input[] = "nothing";
+    char input[20];
     char comp[100];
     int firstNum = 0;
     int secondNum = 0;

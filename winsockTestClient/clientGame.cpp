@@ -16,7 +16,7 @@ int tempMap[10][10];
 int enemyMap[10][10];
 int rows = 10;
 int col = 10;
-char input[] = "nothing";
+char input[20];
 char comp[100]; //holds myMap in char array format so it's easier to send
 int firstNum = 0;
 int secondNum = 0;
