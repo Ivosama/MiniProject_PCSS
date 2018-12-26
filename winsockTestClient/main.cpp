@@ -81,12 +81,20 @@ int main()
         game.showEnemyMap();
         // PROBABLY WANT TO SEND myMAP HERE, I IMAGINE //
         //showEnemyMapDebug();  //shows enemy ship positions
+        do{ //REPLACE 5000 with the enemy player's roll, both here and below.
+            game.roll = game.rollOrder();
+            //send this player's roll here
+            //receive enemy player's roll here
+            if (game.roll > 5000) {
+                game.myTurn = true;
+                std::cout << "You go first" << std::endl;
+            } else {
+                game.myTurn = false;
+                std::cout << "You go second" << std::endl;
+            }
+        }while(game.roll == 5000);
         //actual game loop
         do{ //while the whole thing is running
-            //showEnemyMap();
-            system("pause");    //Replace this with server message to say when it's your turn. First turn should be randomly picked by server.
-            //attackTarget(4,4,1);  //Replace this with the message from enemy saying where they shot. Only happens if the enemy did a turn (sometimes this player goes first). Can assume it's a valid location because enemy client is checking that.
-            game.myTurn = true;
             while(game.myTurn) {    //while it's this client's turn
                 std::cout << "Enter co-ordinates to attack" << std::endl;
                 std::cout << "Do it like number,number or you're stupid" << std::endl;
@@ -111,9 +119,16 @@ int main()
                     game.running = false;
                 }
             }
-            std::cout << "turn ending" << std::endl;
-            std::cout << "Info to send to server: " << game.firstNum-'0' << "," << game.secondNum-'0' << std::endl;
-            // SEND THE ENTERED INPUT TO SERVER
+            if(game.myTurn == true) {
+                std::cout << "turn ending" << std::endl;
+                std::cout << "Info to send to server: " << game.firstNum - '0' << "," << game.secondNum - '0'
+                          << std::endl;
+                // SEND THE ENTERED INPUT TO SERVER
+            }
+            //showEnemyMap();
+            system("pause");    //Replace this with server message to say when it's your turn. First turn should be randomly picked by server.
+            //attackTarget(4,4,1);  //Replace this with the message from enemy saying where they shot. Only happens if the enemy did a turn (sometimes this player goes first). Can assume it's a valid location because enemy client is checking that.
+            game.myTurn = true;
         }while(game.running);
         // Prompt the user for some text // USER ALWAYS HAS TO INPUT SOMETHING BEFORE RECEIVING ANYTHING // THIS SHOULD BE FIXED
         cout << "> ";

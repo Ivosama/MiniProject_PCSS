@@ -27,7 +27,9 @@ public:
     char comp[100];
     int firstNum = 0;
     int secondNum = 0;
+    int roll = 0;
 
+    int rollOrder();
     void revertTemp();
     void compressMap(int map[10][10]);
     void expandMap(char temp[100]);

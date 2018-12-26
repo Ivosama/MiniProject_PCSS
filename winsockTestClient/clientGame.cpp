@@ -20,6 +20,11 @@ char input[20];
 char comp[100]; //holds myMap in char array format so it's easier to send
 int firstNum = 0;
 int secondNum = 0;
+int roll = 0;
+
+int clientGame::rollOrder(){
+    return rand() % 10000;
+}
 
 //turns myMap into a 100-long char array
 void clientGame::compressMap(int map[10][10]){
