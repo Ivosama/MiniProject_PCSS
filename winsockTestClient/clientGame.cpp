@@ -16,8 +16,27 @@ int enemyMap[10][10];
 int rows = 10;
 int col = 10;
 char input[] = "nothing";
+char comp[100]; //holds myMap in char array format so it's easier to send
 int firstNum = 0;
 int secondNum = 0;
+
+//turns myMap into a 100-long char array
+void compressMap(int map[10][10]){
+    for (int i = 0; i<rows; i++){
+        for (int j = 0; j<col; j++){
+            comp[i*10+j] = myMap[i][j];
+        }
+    }
+}
+
+//turns the char array back (from enemy) to a 10x10 int array for enemy map
+void expandMap(char temp[100]){
+    for (int i = 0; i<rows; i++){
+        for (int j = 0; j<col; j++){
+            enemyMap[i][j] = temp[i*10+j];
+        }
+    }
+}
 
 //Replaces temp map with my map
 void revertTemp(){
