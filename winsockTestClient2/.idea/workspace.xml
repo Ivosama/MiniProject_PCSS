@@ -12,8 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02a58901-cc1d-4a08-9a27-ac6ce1a308b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../winsockTestClient/clientGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../winsockTestClient/clientGame.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../winsockTestClient/clientGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/../winsockTestClient/clientGame.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../winsockTestClient/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../winsockTestClient/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -29,10 +27,12 @@
     <session id="-625679471">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.20" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
     </session>
@@ -48,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -142,16 +142,18 @@
       <workItem from="1545586136902" duration="3548000" />
       <workItem from="1545834044664" duration="857000" />
       <workItem from="1545839285032" duration="544000" />
+      <workItem from="1545841602339" duration="311000" />
+      <workItem from="1545843346401" duration="633000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5446000" />
+    <option name="totallyTimeSpent" value="6390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14977308" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15431164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -193,7 +195,7 @@
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
