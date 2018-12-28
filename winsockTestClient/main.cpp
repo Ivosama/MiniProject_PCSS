@@ -97,6 +97,7 @@ int __cdecl main(int argc, char **argv)
         //char tab2[1024];
         //strcpy(tab2, sendString.c_str());
 
+        // This is for all the sending to server
         iResult = send( ConnectSocket, input, (int)sizeof(input), 0 );
 
         //iResult = send( ConnectSocket, sendbuf, (int)strlen(sendbuf), 0 );
