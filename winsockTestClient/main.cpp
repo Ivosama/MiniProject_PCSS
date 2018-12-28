@@ -30,7 +30,8 @@ int __cdecl main(int argc, char **argv)
     char recvbuf[DEFAULT_BUFLEN];
     int iResult;
     int recvbuflen = DEFAULT_BUFLEN;
-    argv[1] = "127.0.0.1";
+    ZeroMemory(recvbuf, recvbuflen);
+    //argv[1] = "127.0.0.1";
 
     // Validate the parameters
     if (argc != 2) {
@@ -80,6 +81,8 @@ int __cdecl main(int argc, char **argv)
         break;
     }
 
+    printf("Connected!");
+
     freeaddrinfo(result);
 
     if (ConnectSocket == INVALID_SOCKET) {
@@ -91,28 +94,39 @@ int __cdecl main(int argc, char **argv)
     // Send an initial buffer
     char input[512];
     do{
-        char input[512];
-        cout<< "Enter a message to send to server: (max 512 characters)\n";
+        // Prompt the user for some text // USER ALWAYS HAS TO INPUT SOMETHING BEFORE RECEIVING ANYTHING // THIS SHOULD BE FIXED
+        cout << "> " << endl;
         cin.getline(input,sizeof(input));
-        //char tab2[1024];
-        //strcpy(tab2, sendString.c_str());
-
-        // This is for all the sending to server
-        iResult = send( ConnectSocket, input, (int)sizeof(input), 0 );
-
-        //iResult = send( ConnectSocket, sendbuf, (int)strlen(sendbuf), 0 );
-        if (iResult == SOCKET_ERROR) {
-            printf("send failed with error: %d\n", WSAGetLastError());
-            closesocket(ConnectSocket);
-            WSACleanup();
-            return 1;
-        }
 
         if (!strcmp(input, "exit")) {
             break;
+        } else {
+            // Send the text
+            int sendResult = send(ConnectSocket, input, 512, 0);
+            if (sendResult != SOCKET_ERROR)
+            {
+                // Wait for response
+                ZeroMemory(input, 4096);
+                int bytesReceived = recv(ConnectSocket, input, 512, 0);
+                if (bytesReceived != SOCKET_ERROR)
+                {
+                    // display response in console
+                    cout << "SERVER> " << string(input, 0, bytesReceived) << endl;
+                } else {
+                    // Print error code
+                    printf("send failed with error: %d\n", WSAGetLastError());
+                    closesocket(ConnectSocket);
+                    WSACleanup();
+                    return 1;
+                }
+            } else {
+                // Print error code
+                printf("send failed with error: %d\n", WSAGetLastError());
+                closesocket(ConnectSocket);
+                WSACleanup();
+                return 1;
+            }
         }
-        //cout << strcmp(input, "exit") << endl;
-        //printf("Bytes Sent: %ld\n", iResult);
     } while(1);
 
 
@@ -129,9 +143,9 @@ int __cdecl main(int argc, char **argv)
     do {
         iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
         if (!strcmp(recvbuf, "exit")) break;
-        cout << recvbuf << endl;
+        cout << "yikers" << recvbuf << endl;
         if (!strncmp(recvbuf, "--[reply]--", 4)) {
-            cout << recvbuf << endl;
+            cout << "wtf" << recvbuf << endl;
         }
 
         if ( iResult > 0 ){
@@ -149,7 +163,7 @@ int __cdecl main(int argc, char **argv)
     } while(1);
 
     string recString(recvbuf);
-    cout<<recString<<endl;
+    cout<<"yikers at the bottom" << recString<<endl;
 
     // cleanup
     closesocket(ConnectSocket);
