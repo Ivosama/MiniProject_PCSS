@@ -51,7 +51,16 @@ int main()
     char buf[4096];
     string userInput;
 	// Do-while loop to send and receive data
-    do
+
+
+    ZeroMemory(buf, 4096);
+    int bytesReceived = recv(sock, buf, 4096, 0);
+    if (bytesReceived > 0)
+    {
+        // display response in console
+        cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
+    }
+
     {
         //Initial setup, clear and generate map
         std::cout << "Randomly generated ships" << std::endl;
@@ -77,11 +86,32 @@ int main()
         }
         game.spawnShips(1);  //spawns enemy ships. Replace with messages from server
         //spawnEasy(1); //spawns one 2-length ship for testing
+        game.compressMap(game.myMap);
         game.showMyMap();
-        game.showEnemyMap();
+        game.showEnemyMapDebug();
+
+        char* tb = (char*)(game.comp);
+        char* testShit = (char*)'p';
+        string testStr = game.comp;
+        //string testStr(game.comp);
+        int sendResult = send(sock, testStr.c_str(), sizeof(testStr)+1, 0);
+        if (sendResult != SOCKET_ERROR){
+            cout << "Tried to send, no error" << endl;
+        }
+        //int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
+        ZeroMemory(buf, 4096);
+        char bytesReceived = recv(sock, buf, 4096, 0);
+        if (bytesReceived > 0)
+        {
+            // display response in console
+            cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
+            //game.expandMap(buf);
+        }
+
+        game.showEnemyMapDebug();
         // PROBABLY WANT TO SEND myMAP HERE, I IMAGINE //
         //showEnemyMapDebug();  //shows enemy ship positions
-        do{ //REPLACE 5000 with the enemy player's roll, both here and below.
+        /*do{ //REPLACE 5000 with the enemy player's roll, both here and below.
             game.roll = game.rollOrder();
             //send this player's roll here
             //receive enemy player's roll here
@@ -92,7 +122,7 @@ int main()
                 game.myTurn = false;
                 std::cout << "You go second" << std::endl;
             }
-        }while(game.roll == 5000);
+        }while(game.roll == 5000);*/
         //actual game loop
         do{ //while the whole thing is running
             while(game.myTurn) {    //while it's this client's turn
@@ -125,10 +155,20 @@ int main()
                 std::cout << "Info to send to server: " << game.firstNum - '0' << "," << game.secondNum - '0'
                           << std::endl;
                 // SEND THE ENTERED INPUT TO SERVER
+                int sendResult = send(sock, game.input, sizeof(game.input), 0);
             }
             //showEnemyMap();
-            system("pause");    //Replace this with server message to say when it's your turn. First turn should be randomly picked by server.
+            //system("pause");    //Replace this with server message to say when it's your turn. First turn should be randomly picked by server.
             //attackTarget(4,4,1);  //Replace this with the message from enemy saying where they shot. Only happens if the enemy did a turn (sometimes this player goes first). Can assume it's a valid location because enemy client is checking that.
+            ZeroMemory(buf, 4096);
+            char bytesReceived = recv(sock, buf, 4096, 0);
+            if (bytesReceived > 0)
+            {
+                // display response in console
+                cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
+                game.attackTarget(buf[0],buf[2],1);
+                //game.expandMap(buf);
+            }
             game.myTurn = true;
         }while(game.running);
         // Prompt the user for some text // USER ALWAYS HAS TO INPUT SOMETHING BEFORE RECEIVING ANYTHING // THIS SHOULD BE FIXED

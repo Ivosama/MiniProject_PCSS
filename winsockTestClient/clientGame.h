@@ -28,6 +28,7 @@ public:
     int firstNum = 0;
     int secondNum = 0;
     int roll = 0;
+    char enemyMove[20];
 
     int rollOrder();
     void revertTemp();

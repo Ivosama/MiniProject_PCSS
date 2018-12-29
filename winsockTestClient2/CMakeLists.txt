@@ -4,4 +4,5 @@ project(winsockTestClient)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(winsockTestClient
-        main.cpp)
+        main.cpp
+        clientGame.cpp clientGame.h)

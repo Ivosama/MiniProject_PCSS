@@ -21,6 +21,7 @@ char comp[100]; //holds myMap in char array format so it's easier to send
 int firstNum = 0;
 int secondNum = 0;
 int roll = 0;
+char enemyMove[20];
 
 int clientGame::rollOrder(){
     return rand() % 10000;
