@@ -12,8 +12,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df5817c7-3814-4543-a372-56cd4bcaef9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestClient/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/winsockTestClient.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/main.cpp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/winsockTestClient/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/winsockTestServer/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2635">
-              <caret line="155" selection-start-line="155" selection-end-line="155" />
+              <caret line="156" selection-start-line="156" selection-end-line="156" />
             </state>
           </provider>
         </entry>
@@ -55,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/winsockTestServer/ConnectedDeviceList.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
+            <state relative-caret-position="92">
+              <caret line="86" column="36" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -153,6 +159,11 @@
             <path>
               <item name="winsockTestClient" type="b2602c69:ProjectViewProjectNode" />
               <item name="MiniProject_PCSS" type="462c0819:PsiDirectoryNode" />
+              <item name="winsockTestClient2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="winsockTestClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiniProject_PCSS" type="462c0819:PsiDirectoryNode" />
               <item name="winsockTestServer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -227,13 +238,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12666000" />
+    <option name="totallyTimeSpent" value="12867000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27987897" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27155825" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -284,7 +294,7 @@
     <entry file="file://$PROJECT_DIR$/winsockTestServer/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2635">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
         </state>
       </provider>
     </entry>
@@ -317,8 +327,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/winsockTestServer/ConnectedDeviceList.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
+        <state relative-caret-position="92">
+          <caret line="86" column="36" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
         </state>
       </provider>
     </entry>
