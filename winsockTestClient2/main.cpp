@@ -50,6 +50,9 @@ int main()
     
     char buf[4096];
     string userInput;
+	// Do-while loop to send and receive data
+
+
     ZeroMemory(buf, 4096);
     int bytesReceived = recv(sock, buf, 4096, 0);
     if (bytesReceived > 0)
@@ -58,8 +61,6 @@ int main()
         cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
     }
 
-    // Do-while loop to send and receive data
-    do
     {
         //Initial setup, clear and generate map
         std::cout << "Randomly generated ships" << std::endl;
@@ -87,15 +88,7 @@ int main()
         //spawnEasy(1); //spawns one 2-length ship for testing
         game.compressMap(game.myMap);
         game.showMyMap();
-
-        ZeroMemory(buf, 4096);
-        char bytesReceived = recv(sock, buf, 4096, 0);
-        if (bytesReceived > 0)
-        {
-            // display response in console
-            cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
-            game.expandMap(buf);
-        }
+        game.showEnemyMapDebug();
 
         char* tb = (char*)(game.comp);
         char* testShit = (char*)'p';
@@ -105,13 +98,20 @@ int main()
         if (sendResult != SOCKET_ERROR){
             cout << "Tried to send, no error" << endl;
         }
-        game.expandMap(game.comp);
-        game.showEnemyMapDebug();
         //int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
+        ZeroMemory(buf, 4096);
+        char bytesReceived = recv(sock, buf, 4096, 0);
+        if (bytesReceived > 0)
+        {
+            // display response in console
+            cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
+            //game.expandMap(buf);
+        }
+
+        game.showEnemyMapDebug();
         // PROBABLY WANT TO SEND myMAP HERE, I IMAGINE //
         //showEnemyMapDebug();  //shows enemy ship positions
-        /*
-        do{ //REPLACE 5000 with the enemy player's roll, both here and below.
+        /*do{ //REPLACE 5000 with the enemy player's roll, both here and below.
             game.roll = game.rollOrder();
             //send this player's roll here
             //receive enemy player's roll here
@@ -122,7 +122,7 @@ int main()
                 game.myTurn = false;
                 std::cout << "You go second" << std::endl;
             }
-        }while(game.roll == 5000); */
+        }while(game.roll == 5000);*/
         //actual game loop
         do{ //while the whole thing is running
             while(game.myTurn) {    //while it's this client's turn
