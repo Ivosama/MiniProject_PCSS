@@ -9,6 +9,10 @@ using namespace std;
 
 int main()
 {
+    char playerOneMap[100];
+    char playerTwoMap[100];
+    int mapsLoaded = 0;
+
     // Initialze winsock
     WSADATA wsData;
     WORD ver = MAKEWORD(2, 2);
@@ -109,21 +113,52 @@ int main()
                         // Put other commands here
                         continue;
                     }
+                    string sendKey(1, buf[0]);
+                    if (sendKey=="m") {
+                        // It's a map!
+                        if (i==0) {
+                            for (int mapDupe = 1; mapDupe < 101; mapDupe++) {
+                                playerOneMap[mapDupe-1] = buf[mapDupe];
+                            }
+                        } else {
+                            for (int mapDupe = 1; mapDupe < 101; mapDupe++) {
+                                playerTwoMap[mapDupe-1] = buf[mapDupe];
+                            }
+                        }
+                        mapsLoaded++;
+						if (mapsLoaded > 1) {
+							for (int sendIter = 0; sendIter < master.fd_count; sendIter++)
+							{
+								SOCKET outSock = master.fd_array[sendIter];
+								if (outSock != listening && outSock != sock) {
+									if (sendIter == 0) {
+										send(outSock, playerTwoMap, 4096, 0);
+									}
+									else if (sendIter == 1) {
+										send(outSock, playerOneMap, 4096, 0);
+									}
 
-                    // Send message to other clients, and NOT the listening socket
+								}
+							}
+						}
+                    } else {
+                        // Send message to other clients, and NOT the listening socket
 
-                    for (int i = 0; i < master.fd_count; i++)
-                    {
-                        SOCKET outSock = master.fd_array[i];
-                        if (outSock != listening && outSock != sock)
+                        for (int i = 0; i < master.fd_count; i++)
                         {
-                            ostringstream ss;
-                            ss << "SOCKET #" << sock << ": " << buf << "\r\n";
-                            string strOut = ss.str();
+                            SOCKET outSock = master.fd_array[i];
+                            if (outSock != listening && outSock != sock)
+                            {
+                                ostringstream ss;
+                                ss << "SOCKET #" << sock << ": " << buf << "\r\n";
+                                string strOut = ss.str();
 
-                            send(outSock, strOut.c_str(), strOut.size() + 1, 0);
+                                send(outSock, strOut.c_str(), strOut.size() + 1, 0);
+                            }
                         }
                     }
+
+
                 }
             }
         }

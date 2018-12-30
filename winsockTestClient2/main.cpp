@@ -91,20 +91,33 @@ int main()
         game.showEnemyMapDebug();
 
         char* tb = (char*)(game.comp);
+        printf(tb);
         char* testShit = (char*)'p';
-        string testStr = game.comp;
+        //string testStr = game.comp;
         //string testStr(game.comp);
-        int sendResult = send(sock, testStr.c_str(), sizeof(testStr)+1, 0);
+
+        // Add map key at start
+        char compAdded[101];
+        compAdded[0] = 'm';
+        for (int i = 1; i < 101; i++) {
+            compAdded[i] = game.comp[i-1];
+        }
+
+        int sendResult = send(sock, compAdded, 101, 0);
         if (sendResult != SOCKET_ERROR){
             cout << "Tried to send, no error" << endl;
         }
         //int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
         ZeroMemory(buf, 4096);
-        char bytesReceived = recv(sock, buf, 4096, 0);
+        int bytesReceived = recv(sock, buf, 4096, 0);
         if (bytesReceived > 0)
         {
             // display response in console
-            cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
+            cout << "SERVER thing up top> " << string(buf, 0, bytesReceived) << endl;
+            char justEnemyMap[100];
+            memcpy(justEnemyMap, buf, 100);
+            game.expandMap(justEnemyMap);
+
             //game.expandMap(buf);
         }
 
