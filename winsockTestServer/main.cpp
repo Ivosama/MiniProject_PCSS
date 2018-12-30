@@ -133,16 +133,36 @@ int main()
                         }
                         mapsLoaded++;
 						if (mapsLoaded > 1) {
+							/*
 							for (int sendIter = 0; sendIter < master.fd_count; sendIter++)
 							{
 								SOCKET outSockALT = master.fd_array[sendIter];
-									if (sendIter == 0) {
-										send(outSockALT, playerTwoMap, 4096, 0);
-									}
-									else if (sendIter == 1) {
-										send(outSockALT, playerOneMap, 4096, 0);
-									}
+								if (sendIter == 0) {
+									send(outSockALT, playerTwoMap, 4096, 0);
+								}
+								else if (sendIter == 1) {
+									send(outSockALT, playerOneMap, 4096, 0);
+								}
 							}
+							*/
+							int iSendResult = send(master.fd_array[1], playerOneMap, 4096, 0);
+
+							if (iSendResult == SOCKET_ERROR)  {
+								printf("send failed with error: %d\n", WSAGetLastError());
+								closesocket(master.fd_array[0]);
+								WSACleanup();
+								return 1;
+							}
+							iSendResult = send(master.fd_array[2], playerTwoMap, 4096, 0);
+
+							if (iSendResult == SOCKET_ERROR) {
+								printf("send failed with error: %d\n", WSAGetLastError());
+								closesocket(master.fd_array[1]);
+								WSACleanup();
+								return 1;
+							}
+							
+							//send(master.fd_array[1], playerOneMap, 4096, 0);
 						}
                     } else {
                         // Send message to other clients, and NOT the listening socket
