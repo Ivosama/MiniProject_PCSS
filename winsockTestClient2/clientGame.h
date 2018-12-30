@@ -15,7 +15,7 @@
 
 class clientGame{
 public:
-    bool myTurn = true;
+    bool myTurn = false;
     bool running = true;
     bool okay = false;
     int myMap[10][10];

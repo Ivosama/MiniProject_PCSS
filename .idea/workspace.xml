@@ -13,13 +13,9 @@
   <component name="ChangeListManager">
     <list default="true" id="df5817c7-3814-4543-a372-56cd4bcaef9b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestClient/clientGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient/clientGame.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestClient/clientGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient/clientGame.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestClient/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestClient2/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestClient2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestServer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestServer/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/clientGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/clientGame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winsockTestClient2/clientGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/clientGame.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/winsockTestClient/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,71 +24,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/winsockTestServer/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2635">
+            <state relative-caret-position="536">
               <caret line="155" selection-start-line="155" selection-end-line="155" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/winsockTestServer/ConnectedDeviceList.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/winsockTestClient2/main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-658">
-              <caret line="107" column="34" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/winsockTestServer/ConnectedDeviceList.h">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/winsockTestServer/DeviceConnected.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/winsockTestServer/Game2maybe.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/winsockTestServer/Game.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/winsockTestServer/Game2maybe.h">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -121,11 +61,13 @@
         <option value="$PROJECT_DIR$/winsockTestServer/DeviceConnected.cpp" />
         <option value="$PROJECT_DIR$/winsockTestServer/ConnectedDeviceList.cpp" />
         <option value="$PROJECT_DIR$/winsockTestClient2/main.cpp" />
+        <option value="$PROJECT_DIR$/winsockTestClient2/clientGame.cpp" />
+        <option value="$PROJECT_DIR$/winsockTestClient2/clientGame.h" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -194,7 +136,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MiniProject_PCSS" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MiniProject_PCSS" TARGET_NAME="MiniProject_PCSS" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MiniProject_PCSS" RUN_TARGET_NAME="MiniProject_PCSS">
+    <configuration name="MiniProject_PCSS" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="winsockTestClient" TARGET_NAME="MiniProject_PCSS" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="winsockTestClient" RUN_TARGET_NAME="MiniProject_PCSS">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -228,17 +170,19 @@
       <workItem from="1546023172208" duration="811000" />
       <workItem from="1546100858697" duration="3000" />
       <workItem from="1546105204402" duration="198000" />
+      <workItem from="1546190537734" duration="593000" />
+      <workItem from="1546197280400" duration="95000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14351000" />
+    <option name="totallyTimeSpent" value="15039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29637527" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30277187" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -276,20 +220,6 @@
     <entry file="file://$PROJECT_DIR$/winsockTestServer/DeviceConnected.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/winsockTestClient/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/winsockTestServer/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2635">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/winsockTestServer/ConnectedDeviceList.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
@@ -324,10 +254,53 @@
     <entry file="file://$PROJECT_DIR$/winsockTestServer/Game2maybe.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/winsockTestClient/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/winsockTestClient2/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-658">
+        <state relative-caret-position="323">
           <caret line="107" column="34" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winsockTestClient/clientGame.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winsockTestClient2/clientGame.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winsockTestClient2/clientGame.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winsockTestClient/clientGame.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winsockTestServer/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
         </state>
       </provider>
     </entry>

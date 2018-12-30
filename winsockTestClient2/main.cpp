@@ -47,10 +47,10 @@ int main()
         return 1;
     }
 
-    
+
     char buf[4096];
     string userInput;
-	// Do-while loop to send and receive data
+    // Do-while loop to send and receive data
 
 
     ZeroMemory(buf, 4096);
@@ -87,16 +87,9 @@ int main()
         game.spawnShips(1);  //spawns enemy ships. Replace with messages from server
         //spawnEasy(1); //spawns one 2-length ship for testing
         game.compressMap(game.myMap);
-        game.showMyMap();
         game.showEnemyMapDebug();
+        game.showMyMap();
 
-        char* tb = (char*)(game.comp);
-        printf(tb);
-        char* testShit = (char*)'p';
-        //string testStr = game.comp;
-        //string testStr(game.comp);
-
-        // Add map key at start
         char compAdded[101];
         compAdded[0] = 'm';
         for (int i = 1; i < 101; i++) {
@@ -109,6 +102,7 @@ int main()
         }
         //int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
         ZeroMemory(buf, 4096);
+        cout << "Waiting to receive..." << endl;
         int bytesReceived = recv(sock, buf, 4096, 0);
         if (bytesReceived > 0)
         {
