@@ -173,7 +173,7 @@ int main()
             {
                 // display response in console
                 cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
-                game.attackTarget(buf[0],buf[2],1);
+                game.attackTarget(buf[10]-'0',buf[12]-'0',1);
                 //game.expandMap(buf);
             }
             game.myTurn = true;

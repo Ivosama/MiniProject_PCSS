@@ -12,10 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df5817c7-3814-4543-a372-56cd4bcaef9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestClient2/clientGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/clientGame.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winsockTestClient2/clientGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/clientGame.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/winsockTestClient/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,6 +24,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/winsockTestClient/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="769">
+              <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/winsockTestServer/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="536">
@@ -172,17 +178,26 @@
       <workItem from="1546105204402" duration="198000" />
       <workItem from="1546190537734" duration="593000" />
       <workItem from="1546197280400" duration="95000" />
+      <workItem from="1546201558398" duration="179000" />
     </task>
+    <task id="LOCAL-00001" summary="added the stuff to client 1">
+      <created>1546201698468</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1546201698468</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15039000" />
+    <option name="totallyTimeSpent" value="15218000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30277187" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30597016" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -205,6 +220,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added the stuff to client 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the stuff to client 1" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/winsockTestServer/CMakeLists.txt">
@@ -254,13 +273,6 @@
     <entry file="file://$PROJECT_DIR$/winsockTestServer/Game2maybe.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/winsockTestClient/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/winsockTestClient2/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -301,6 +313,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
           <caret line="155" selection-start-line="155" selection-end-line="155" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winsockTestClient/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="769">
+          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
         </state>
       </provider>
     </entry>
