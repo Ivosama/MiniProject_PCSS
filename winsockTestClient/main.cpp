@@ -87,7 +87,7 @@ int main()
         game.spawnShips(1);  //spawns enemy ships. Replace with messages from server
         //spawnEasy(1); //spawns one 2-length ship for testing
         game.compressMap(game.myMap);
-        game.showEnemyMapDebug();
+        game.showEnemyMap();
         game.showMyMap();
 
         char compAdded[101];
@@ -115,7 +115,7 @@ int main()
             //game.expandMap(buf);
         }
 
-        game.showEnemyMapDebug();
+        game.showEnemyMap();
         // PROBABLY WANT TO SEND myMAP HERE, I IMAGINE //
         //showEnemyMapDebug();  //shows enemy ship positions
         /*do{ //REPLACE 5000 with the enemy player's roll, both here and below.
@@ -134,7 +134,7 @@ int main()
         do{ //while the whole thing is running
             while(game.myTurn) {    //while it's this client's turn
                 std::cout << "Enter co-ordinates to attack" << std::endl;
-                std::cout << "Do it like number,number or you're stupid" << std::endl;
+                std::cout << "Please write it like number,number (i.e 3,6)" << std::endl;
                 do { //continues to ask for inputs until you give a valid one
                     cin >> game.input;
                     if (game.checkValidInput(game.input)) {
