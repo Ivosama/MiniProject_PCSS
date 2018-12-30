@@ -63,7 +63,7 @@ int main()
 		cout << "socketCount: " << socketCount << endl;
 		cout << "Sizeof thing: " << (sizeof(copy.fd_array) / sizeof(copy.fd_array[0])) << endl;
         // Loop through all the current connections / potential connections
-        for (int i = 0; i < socketCount; i++)
+        for (int i = 0; i < master.fd_count; i++)
         {
 			cout << i << endl;
             // Copy socket object from array
@@ -135,16 +135,13 @@ int main()
 						if (mapsLoaded > 1) {
 							for (int sendIter = 0; sendIter < master.fd_count; sendIter++)
 							{
-								SOCKET outSock = master.fd_array[sendIter];
-								if (outSock != listening && outSock != sock) {
+								SOCKET outSockALT = master.fd_array[sendIter];
 									if (sendIter == 0) {
-										send(outSock, playerTwoMap, 4096, 0);
+										send(outSockALT, playerTwoMap, 4096, 0);
 									}
 									else if (sendIter == 1) {
-										send(outSock, playerOneMap, 4096, 0);
+										send(outSockALT, playerOneMap, 4096, 0);
 									}
-
-								}
 							}
 						}
                     } else {
