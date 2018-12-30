@@ -15,9 +15,8 @@
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../winsockTestClient/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../winsockTestClient/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clientGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/clientGame.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clientGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/clientGame.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../winsockTestServer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../winsockTestServer/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="94" column="39" lean-forward="true" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+            <state relative-caret-position="146">
+              <caret line="97" column="2" selection-start-line="97" selection-start-column="2" selection-end-line="97" selection-end-column="2" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -160,7 +159,7 @@
       <workItem from="1546104470648" duration="9527000" />
       <workItem from="1546115073442" duration="972000" />
       <workItem from="1546116099065" duration="69000" />
-      <workItem from="1546197161078" duration="4254000" />
+      <workItem from="1546197161078" duration="8962000" />
     </task>
     <task id="LOCAL-00001" summary="Functioning sending immediate reactions, i just put words together, you know what I mean">
       <created>1546111390882</created>
@@ -173,11 +172,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15434000" />
+    <option name="totallyTimeSpent" value="20142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.70568925" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -236,8 +234,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="94" column="39" lean-forward="true" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+        <state relative-caret-position="146">
+          <caret line="97" column="2" selection-start-line="97" selection-start-column="2" selection-end-line="97" selection-end-column="2" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

@@ -119,12 +119,16 @@ int main()
                     if (sendKey=="m") {
                         // It's a map!
                         if (i==0) {
+                            std::cout << "Player One Map: " << endl;
                             for (int mapDupe = 1; mapDupe < 101; mapDupe++) {
                                 playerOneMap[mapDupe-1] = buf[mapDupe];
+                                std::cout << playerOneMap[mapDupe] << " ";
                             }
                         } else {
+                            std::cout << "Player Two Map: " << endl;
                             for (int mapDupe = 1; mapDupe < 101; mapDupe++) {
                                 playerTwoMap[mapDupe-1] = buf[mapDupe];
+                                std::cout << playerTwoMap[mapDupe] << " ";
                             }
                         }
                         mapsLoaded++;
@@ -152,7 +156,7 @@ int main()
                             if (outSock != listening && outSock != sock)
                             {
                                 ostringstream ss;
-                                ss << "SOCKET #" << sock << ": " << buf << "\r\n";
+                                ss << "Received: " << buf << "\r\n";
                                 string strOut = ss.str();
 
                                 send(outSock, strOut.c_str(), strOut.size() + 1, 0);
