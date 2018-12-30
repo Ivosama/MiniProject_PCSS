@@ -242,7 +242,7 @@ bool clientGame::attackTarget(int x, int y, int p) {
     }
     else{
         if (myMap[x][y] == 0) {
-            std::cout << "The enemy has fired at " << x << "," << y  << "and missed!" << std::endl;
+            std::cout << "The enemy has fired at " << x << "," << y  << " and missed!" << std::endl;
             myMap[x][y] = 2;
         }
         if (myMap[x][y] == 1) {
