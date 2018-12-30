@@ -61,9 +61,9 @@ int main()
         //Amount of sockets
         int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
 		cout << "socketCount: " << socketCount << endl;
-		cout << "Sizeof thing: " << (sizeof(copy.fd_array) / sizeof(*copy.fd_array)) << endl;
+		cout << "Sizeof thing: " << (sizeof(copy.fd_array) / sizeof(copy.fd_array[0])) << endl;
         // Loop through all the current connections / potential connections
-        for (int i = 0; i < (sizeof(copy.fd_array)/sizeof(*copy.fd_array)); i++)
+        for (int i = 0; i < socketCount; i++)
         {
 			cout << i << endl;
             // Copy socket object from array
