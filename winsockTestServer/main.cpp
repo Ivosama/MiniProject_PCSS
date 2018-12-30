@@ -79,7 +79,7 @@ int main()
                 FD_SET(client, &master);
 
                 // Send a welcome message to the connected client
-                string welcomeMsg = "Welcome to the motherfucking only server that works!\r\n";
+                string welcomeMsg = "Welcome to the server!\r\n";
                 send(client, welcomeMsg.c_str(), welcomeMsg.size() + 1, 0);
             }
             else // It's an incoming message
