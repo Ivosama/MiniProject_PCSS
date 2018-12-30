@@ -75,8 +75,8 @@ int main()
                     game.spawnShips(0);
                     game.okay = true;
                 } else if (game.input[0] == 77 || game.input[0] == 109) {   //if M or m
-                    std::cout << "Pretending to place ships manually" << std::endl;
-                    game.spawnShips(0);//put manual ship placement function here
+                    std::cout << "Placing ships manually..." << std::endl;
+                    game.manualPlacement();//put manual ship placement function here
                     game.okay = true;
                 }
             }
@@ -145,7 +145,7 @@ int main()
                         send(sock, game.input, sizeof(game.input),0);
                     } else {
                         game.okay = false;
-                        std::cout << "Your input was shitty, try again: " << game.input << std::endl;
+                        std::cout << "Your input was not correct, try again: " << game.input << std::endl;
                     }
                 } while (!game.okay);
                 game.myTurn = !game.attackTarget(game.firstNum - 48, game.secondNum - 48, 0);  //if valid shot, returns true (myTurn false)

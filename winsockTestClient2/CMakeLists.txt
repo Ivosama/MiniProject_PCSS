@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(winsockTestClient
         main.cpp
-        clientGame.cpp clientGame.h)
+        clientGame.cpp clientGame.h Fleet.cpp Fleet.h)

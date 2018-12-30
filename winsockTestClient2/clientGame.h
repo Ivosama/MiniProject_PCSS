@@ -50,6 +50,7 @@ public:
     bool attackTarget(int x, int y, int p);
     bool checkValidInput(char in[]);
     bool checkVictory();
+    void manualPlacement();
     int play();
 };
 

@@ -6,6 +6,7 @@
 #include <chrono>
 #include <thread>
 #include "clientGame.h"
+#include "Fleet.h"
 
 using namespace std;
 bool myTurn = false;
@@ -170,11 +171,19 @@ void clientGame::spawnEasy(int p){
     placeOne(2,p);
 }
 
-void clientGame::showMyMap(){
+void clientGame::showMyMap() {
     std::cout << "Your map" << std::endl;
-    for (int i = 0; i<rows; i++){
-        for (int j = 0; j<col; j++){
-            std::cout << myMap[i][j] << " ";
+    std::cout << " " << " |" << " 0 1 2 3 4 5 6 7 8 9" << std::endl;
+    std::cout << "  ---------------------" << std::endl;
+    for (int i = 0; i < rows; i++) {
+        std::cout << i << " |" << " ";
+        for (int j = 0; j < col; j++) {
+            if (myMap[i][j] == 0) {
+                std::cout << "~" << " ";
+            } else {
+                char t = 241;
+                std::cout << t << " ";
+            }
         }
         std::cout << std::endl;
     }
@@ -183,12 +192,19 @@ void clientGame::showMyMap(){
 //displays enemy map, with ships hidden
 void clientGame::showEnemyMap(){
     std::cout << "Enemy map" << std::endl;
+    std::cout << " " << " |" << " 0 1 2 3 4 5 6 7 8 9" << std::endl;
+    std::cout << "  ---------------------" << std::endl;
     for (int i = 0; i<rows; i++){
+        std::cout << i << " |" << " ";
         for (int j = 0; j<col; j++){
             if(enemyMap[i][j] == 0 || enemyMap[i][j] == 1)
-                std::cout << "0" << " ";
+                std::cout << "~" << " ";
             else
-                std::cout << enemyMap[i][j] << " ";
+            if(enemyMap[i][j] == 2){
+                std::cout << "*" << " ";
+            }else
+                std::cout << "X" << " ";
+
         }
         std::cout << std::endl;
     }
@@ -277,6 +293,82 @@ bool clientGame::checkVictory(){
         }
     }
     return true;
+}
+
+void clientGame::manualPlacement() {
+    Fleet fleet;
+    int totalShips = 0;
+    while (totalShips < 7) {
+        showMyMap();
+        int size = fleet.SHIPS[fleet.shipNames[totalShips]];
+        std::cout << "Place the ship Commander: " << fleet.shipNames[totalShips] << std::endl;
+        std::cout << "Remember Commander! The ship is " << size << " spaces long!" << std::endl;
+        char coord[20];
+        std::cin >> coord;
+        int pos[2] = {coord[0],coord[2]};
+        if(coord[0]-48 < 0 || coord[0]-48 > 9){
+            continue;
+        }
+        if(coord[2]-48 < 0 || coord[2]-48 > 9){
+            continue;
+        }
+        std::cout << "Type H for Horizontal and V for vertical?" << std::endl;
+        std::string hv;
+        std::cin >> hv;
+
+        if (hv[0] == 'V') {
+            int check = 0;
+            int initPos = pos[0]-48;
+            int increasePos = pos[0] - 48;
+            int otherPos = pos[1] - 48;
+            while (check == 0) {
+                if (myMap[increasePos++][otherPos] == 1) {
+                    check++;
+                }
+                if (increasePos > initPos + size) {
+                    break;
+                }if(increasePos >= 9){
+                    check++;
+                }
+            }
+            if (check > 0) {
+                std::cout << "The ship cannot fit in this space" << std::endl;
+            } else {
+                for (int x = initPos; x <= increasePos; x++) {
+                    myMap[x][otherPos] = 1;
+                }
+                totalShips++;
+                std::cout << "Ship is in position!" << std::endl;
+            }
+        }
+        if (hv[0] == 'H') {
+            int check = 0;
+            int initPos = pos[1]-48;
+            int increasePos = pos[1]-48;
+            int otherPos = pos[0]-48;
+            while (check == 0) {
+                if (myMap[otherPos][increasePos++] == 1) {
+                    check++;
+                }
+                if (increasePos > initPos + size) {
+                    break;
+                }
+                if (increasePos >= 9) {
+                    check++;
+
+                }
+            }
+            if (check > 0) {
+                std::cout << "The ship cannot fit in this space" << std::endl;
+            } else {
+                for (int x = initPos; x <= increasePos; x++) {
+                    myMap[otherPos][x] = 1;
+                }
+                totalShips++;
+                std::cout << "Ship is in position!" << std::endl;
+            }
+        }
+    }
 }
 
 int clientGame::play() {
