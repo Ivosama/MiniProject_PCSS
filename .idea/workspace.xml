@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="POSTPONE_SUITABLE_CONFIGURATIONS_SEARCH" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="false">
     <generated>
       <config projectName="winsockTestClient" targetName="winsockTestClient" />
     </generated>
@@ -12,7 +34,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df5817c7-3814-4543-a372-56cd4bcaef9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/winsockTestClient2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/winsockTestClient2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/winsockTestClient/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,12 +43,24 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1473920546">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/winsockTestClient/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="769">
+            <state relative-caret-position="539">
               <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
             </state>
           </provider>
@@ -35,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/winsockTestServer/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
+            <state relative-caret-position="2635">
               <caret line="155" selection-start-line="155" selection-end-line="155" />
             </state>
           </provider>
@@ -72,6 +106,12 @@
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
@@ -86,23 +126,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="winsockTestClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiniProject_PCSS" type="b2602c69:ProjectViewProjectNode" />
               <item name="MiniProject_PCSS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="winsockTestClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MiniProject_PCSS" type="462c0819:PsiDirectoryNode" />
-              <item name="winsockTestClient" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="winsockTestClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MiniProject_PCSS" type="462c0819:PsiDirectoryNode" />
-              <item name="winsockTestClient2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="winsockTestClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MiniProject_PCSS" type="462c0819:PsiDirectoryNode" />
-              <item name="winsockTestServer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -179,6 +204,8 @@
       <workItem from="1546190537734" duration="593000" />
       <workItem from="1546197280400" duration="95000" />
       <workItem from="1546201558398" duration="179000" />
+      <workItem from="1546214472123" duration="17000" />
+      <workItem from="1546214501754" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="added the stuff to client 1">
       <created>1546201698468</created>
@@ -191,13 +218,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15218000" />
+    <option name="totallyTimeSpent" value="15267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30597016" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14552239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -211,7 +237,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32719395" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="CMake" order="11" visible="true" weight="0.32719395" />
+      <window_info active="true" anchor="bottom" id="CMake" order="11" visible="true" weight="0.3264642" />
+      <window_info anchor="bottom" id="TeamCity" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -220,6 +247,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added the stuff to client 1" />
@@ -287,9 +317,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -301,25 +328,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/winsockTestClient/clientGame.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winsockTestClient/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="539">
+          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/winsockTestServer/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
+        <state relative-caret-position="2635">
           <caret line="155" selection-start-line="155" selection-end-line="155" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/winsockTestClient/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="769">
-          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
         </state>
       </provider>
     </entry>
